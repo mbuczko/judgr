@@ -1,18 +1,18 @@
-(ns judgr.extractor.brazilian-extractor
+(ns judgr.extractor.polish-extractor
   (:use [judgr.extractor.base])
   (:import  [java.io StringReader]
             [org.apache.lucene.analysis.tokenattributes CharTermAttribute]
-            [org.apache.lucene.analysis.br BrazilianAnalyzer]
+            [org.apache.lucene.analysis.pl PolishAnalyzer]
             [org.apache.lucene.util Version]))
 
-(def analyzer (BrazilianAnalyzer. Version/LUCENE_43))
+(def analyzer (PolishAnalyzer. Version/LUCENE_43))
 
 (defn- extractor-settings
   "Returns the settings specific for this extractor."
   [settings]
-  (-> settings :extractor :brazilian-text))
+  (-> settings :extractor :polish-text))
 
-(deftype BrazilianTextExtractor [settings]
+(deftype PolishTextExtractor [settings]
   FeatureExtractor
   (extract-features [fe item]
     (let [stream (.tokenStream analyzer "text" (StringReader. item))]

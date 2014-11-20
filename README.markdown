@@ -462,5 +462,6 @@ user=> (classifier-from my-settings)
 ## License
 
 Copyright (C) Daniel Fernandes Martins
+Polish extractor by Michal Buczko
 
 Distributed under the New BSD License. See COPYING for further details.

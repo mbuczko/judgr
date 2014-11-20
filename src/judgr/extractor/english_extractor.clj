@@ -5,7 +5,7 @@
             [org.apache.lucene.analysis.en EnglishAnalyzer]
             [org.apache.lucene.util Version]))
 
-(def analyzer (EnglishAnalyzer. Version/LUCENE_30))
+(def analyzer (EnglishAnalyzer. Version/LUCENE_43))
 
 (defn- extractor-settings
   "Returns the settings specific for this extractor."
@@ -16,9 +16,10 @@
   FeatureExtractor
   (extract-features [fe item]
     (let [stream (.tokenStream analyzer "text" (StringReader. item))]
+      (.reset stream)
       (loop [tokens []]
         (if-not (.incrementToken stream)
           (if (:remove-duplicates? (extractor-settings settings))
             (set tokens) tokens)
           (recur (conj tokens
-                       (.term (.getAttribute stream CharTermAttribute)))))))))
+                       (.toString (.getAttribute stream CharTermAttribute)))))))))

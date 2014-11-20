@@ -8,6 +8,7 @@
 
    :extractor {:type :english-text
                :english-text   {:remove-duplicates? true}
+               :polish-text    {:remove-duplicates? true}
                :brazilian-text {:remove-duplicates? true}}
 
    :classifier {:type :default

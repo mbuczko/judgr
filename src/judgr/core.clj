@@ -1,12 +1,14 @@
 (ns judgr.core
   (:require [judgr.db.memory-db]
             [judgr.extractor.brazilian-extractor]
+            [judgr.extractor.polish-extractor]
             [judgr.extractor.english-extractor]
             [judgr.classifier.default-classifier])
 
   (:import  [judgr.db.memory_db MemoryDB]
             [judgr.extractor.brazilian_extractor BrazilianTextExtractor]
             [judgr.extractor.english_extractor EnglishTextExtractor]
+            [judgr.extractor.polish_extractor PolishTextExtractor]
             [judgr.classifier.default_classifier DefaultClassifier]))
 
 (defmulti db-from #(-> % :database :type))
@@ -28,3 +30,6 @@
 
 (defmethod extractor-from :english-text [settings]
   (EnglishTextExtractor. settings))
+
+(defmethod extractor-from :polish-text [settings]
+  (PolishTextExtractor. settings))
