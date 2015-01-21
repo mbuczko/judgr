@@ -1,4 +1,5 @@
 # Judgr
+Note, this is a fork of original judgr with Polish extractor added.
 
 Judgr (pronounced as judger) is a
 [naïve Bayes classifier](http://en.wikipedia.org/wiki/Naive_Bayes_classifier)
